@@ -83,16 +83,6 @@ public class Tabell     // Samleklasse for tabellmetoder
         return m;
     }
 
-    /*
-    	Lag metoden public static void skriv(int[] a, int fra, int til).
-    	Den skal skrive ut tallene i intervallet a[fra:til> til konsollet -
-    	alle på én linje og et mellomrom mellom hvert tall.
-    	Ikke mellomrom og ikke linjeskift etter siste verdi.
-    	Lag så metoden public static void skriv(int[] a).
-    	Den skal skrive ut hele tabellen - alle på én linje, en blank mellom hvert tall.
-    	Ikke mellomrom og ikke linjeskift etter siste verdi. Legg begge metodene i samleklassen Tabell.
-     */
-
     public static void skriv(int[] a, int fra, int til){
         System.out.print(a[fra]);
         for(int i = fra+1; i < til; i++) {
@@ -102,8 +92,72 @@ public class Tabell     // Samleklasse for tabellmetoder
 
     public static void skriv2(int[] a){
         System.out.print(a[0]);
-        for(int i = fra+1; i < til; i++) {
+        for(int i = 1; i < a.length; i++) {
             System.out.print(" " + a[i]);
         }
     }
+
+    public static void skrivln(int[] a, int fra, int til){
+        System.out.print(a[fra]);
+        for(int i = fra+1; i < til; i++) {
+            System.out.print(" " + a[i]);
+        }
+        System.out.println();
+    }
+
+    public static void skrivln2(int[] a){
+        System.out.print(a[0]);
+        for(int i = 1; i < a.length; i++) {
+            System.out.print(" " + a[i]);
+        }
+        System.out.println();
+    }
+
+    public static void skrivlnC(char[] c, int fra, int til){
+        System.out.print(c[fra]);
+        for(int i = fra+1; i < til; i++) {
+            System.out.print(" " + c[i]);
+        }
+        System.out.println();
+    }
+
+    public static void skrivlnC2(char[] c){
+        System.out.print(c[0]);
+        for(int i = 1; i < c.length; i++) {
+            System.out.print(" " + c[i]);
+        }
+        System.out.println();
+    }
+    /*
+    Lag metoden public static int[] naturligeTall(int n).
+Den skal returnere en heltallstabell som inneholder tallene 1, 2, . . . , n.
+Hvis n er mindre enn 1 skal det kastes et unntak.
+Lag også den mer generelle metoden public static int[] heleTall(int fra, int til).
+ Den skal returnere en heltallstabell som inneholder tallene fra og med fra og til,
+men ikke med, tallet til. For eksempel skal kallet heleTall(1,6) gi tabellen {1, 2, 3, 4, 5}.
+ Hvis fra er større enn til kastes et unntak. Hvis fra er lik til returneres en tom tabell.
+Legg metodene i samleklassen Tabell.
+     */
+    public static int[] naturligeTall(int n) {
+        if(n > 1) {
+            throw new IllegalArgumentException("Kun tall over 1");
+        }
+        int[] a = new int[];
+        a[0] = 1;
+        for(int i = 0; i <= n; i++){
+            a[i] = i;
+        }
+    }
+    public static int[] heleTall(int fra, int til) {
+        if(fra > til) {
+            throw new IllegalArgumentException("Ikke mulig");
+        }
+
+        if(fra == til) {
+            return
+        }else{
+            
+        }
+    }
+
 }

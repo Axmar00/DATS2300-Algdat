@@ -27,7 +27,9 @@ public class Ukeoppgave2 {
         }
         return m;
     }
-
+         */
+        /*Deloppgave 2 - 7
+        Gjort i Tabell.java
          */
 
 
