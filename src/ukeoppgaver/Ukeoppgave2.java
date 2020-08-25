@@ -16,8 +16,8 @@ public class Ukeoppgave2 {
 
         for (int i = fra + 1; i < til; i++) {
             if (a[i] < minsteverdi) {
-                m = i;                // indeks til største verdi oppdateres
-                minsteverdi = a[m];     // største verdi oppdateres
+                m = i;                // indeks til minste verdi oppdateres
+                minsteverdi = a[m];     // minste verdi oppdateres
             }
         }
         return m;
