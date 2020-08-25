@@ -1,7 +1,7 @@
 package ukeoppgaver;
 import java.util.*;
 
-public class Oppgave {
+public class Ukeoppgave1 {
 
     public static int maks1(int[] a)  // a er en heltallstabell
     {
