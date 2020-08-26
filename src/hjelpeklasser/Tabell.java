@@ -48,6 +48,10 @@ public class Tabell     // Samleklasse for tabellmetoder
         if (fra < 0 || til > a.length || fra >= til) {
             throw new IllegalArgumentException("Illegalt intervall!");
         }
+        if (fra == til) {
+            throw new NoSuchElementException
+                    ("fra(" + fra + ") = til(" + til + ") - tomt tabellintervall!");
+        }
 
         int m = fra;              // indeks til største verdi i a[fra:til>
         int maksverdi = a[fra];   // største verdi i a[fra:til>
@@ -129,16 +133,7 @@ public class Tabell     // Samleklasse for tabellmetoder
         }
         System.out.println();
     }
-    /*
-    Lag metoden public static int[] naturligeTall(int n).
-    Den skal returnere en heltallstabell som inneholder tallene 1, 2, . . . , n.
-Hvis n er mindre enn 1 skal det kastes et unntak.
-Lag også den mer generelle metoden public static int[] heleTall(int fra, int til).
- Den skal returnere en heltallstabell som inneholder tallene fra og med fra og til,
-men ikke med, tallet til. For eksempel skal kallet heleTall(1,6) gi tabellen {1, 2, 3, 4, 5}.
- Hvis fra er større enn til kastes et unntak. Hvis fra er lik til returneres en tom tabell.
-Legg metodene i samleklassen Tabell.
-     */
+
     public static int[] naturligeTall(int n) {
         if(n > 1) {
             throw new IllegalArgumentException("Kun tall over 1");
@@ -150,7 +145,6 @@ Legg metodene i samleklassen Tabell.
         return a;
     }
 
-    
     public static int[] heleTall(int fra, int til) {
         if(fra > til) {
             throw new IllegalArgumentException("Ikke mulig");
@@ -176,6 +170,20 @@ Legg metodene i samleklassen Tabell.
         if (fra > til)                                // fra er større enn til
             throw new IllegalArgumentException
                     ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
+    }
+
+    public static void vhKontroll(int tablengde, int v, int h)
+    {
+        if (v < 0)
+            throw new ArrayIndexOutOfBoundsException("v(" + v + ") < 0");
+
+        if (h >= tablengde)
+            throw new ArrayIndexOutOfBoundsException
+                    ("h(" + h + ") >= tablengde(" + tablengde + ")");
+
+        if (v > h + 1)
+            throw new IllegalArgumentException
+                    ("v = " + v + ", h = " + h);
     }
 
 
