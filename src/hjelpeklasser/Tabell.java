@@ -131,7 +131,7 @@ public class Tabell     // Samleklasse for tabellmetoder
     }
     /*
     Lag metoden public static int[] naturligeTall(int n).
-Den skal returnere en heltallstabell som inneholder tallene 1, 2, . . . , n.
+    Den skal returnere en heltallstabell som inneholder tallene 1, 2, . . . , n.
 Hvis n er mindre enn 1 skal det kastes et unntak.
 Lag også den mer generelle metoden public static int[] heleTall(int fra, int til).
  Den skal returnere en heltallstabell som inneholder tallene fra og med fra og til,
@@ -139,25 +139,29 @@ men ikke med, tallet til. For eksempel skal kallet heleTall(1,6) gi tabellen {1,
  Hvis fra er større enn til kastes et unntak. Hvis fra er lik til returneres en tom tabell.
 Legg metodene i samleklassen Tabell.
      */
-    /*public static int[] naturligeTall(int n) {
+    public static int[] naturligeTall(int n) {
         if(n > 1) {
             throw new IllegalArgumentException("Kun tall over 1");
         }
-        int[] a = new int[];
-        a[0] = 1;
+        int[] a = new int[n];
         for(int i = 0; i <= n; i++){
             a[i] = i;
         }
+        return a;
     }
+
+    
     public static int[] heleTall(int fra, int til) {
         if(fra > til) {
             throw new IllegalArgumentException("Ikke mulig");
         }
 
-        if(fra == til) {
-            return 0;
+        int[] a = new int[til-fra];
+        for(int i = fra; i < til; i++){
+            a[i] = i;
         }
-    }*/
+        return a;
+    }
 
     public static void fratilKontroll(int tablengde, int fra, int til)
     {
