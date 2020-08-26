@@ -1,4 +1,5 @@
 package hjelpeklasser;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Tabell     // Samleklasse for tabellmetoder
@@ -138,7 +139,7 @@ men ikke med, tallet til. For eksempel skal kallet heleTall(1,6) gi tabellen {1,
  Hvis fra er større enn til kastes et unntak. Hvis fra er lik til returneres en tom tabell.
 Legg metodene i samleklassen Tabell.
      */
-    public static int[] naturligeTall(int n) {
+    /*public static int[] naturligeTall(int n) {
         if(n > 1) {
             throw new IllegalArgumentException("Kun tall over 1");
         }
@@ -154,10 +155,24 @@ Legg metodene i samleklassen Tabell.
         }
 
         if(fra == til) {
-            return
-        }else{
-            
+            return 0;
         }
+    }*/
+
+    public static void fratilKontroll(int tablengde, int fra, int til)
+    {
+        if (fra < 0)                                  // fra er negativ
+            throw new ArrayIndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+
+        if (til > tablengde)                          // til er utenfor tabellen
+            throw new ArrayIndexOutOfBoundsException
+                    ("til(" + til + ") > tablengde(" + tablengde + ")");
+
+        if (fra > til)                                // fra er større enn til
+            throw new IllegalArgumentException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
     }
+
 
 }
