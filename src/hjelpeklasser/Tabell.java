@@ -45,12 +45,13 @@ public class Tabell     // Samleklasse for tabellmetoder
 
     public static int maks(int[] a, int fra, int til) {
 
-        if (fra < 0 || til > a.length || fra >= til) {
-            throw new IllegalArgumentException("Illegalt intervall!");
-        }
+        fratilKontroll(a.length,fra,til);
         if (fra == til) {
             throw new NoSuchElementException
                     ("fra(" + fra + ") = til(" + til + ") - tomt tabellintervall!");
+        }
+        if(a == null){
+            throw new IllegalArgumentException("Arrayet er null");
         }
 
         int m = fra;              // indeks til største verdi i a[fra:til>
@@ -135,11 +136,11 @@ public class Tabell     // Samleklasse for tabellmetoder
     }
 
     public static int[] naturligeTall(int n) {
-        if(n > 1) {
+        if(n < 1) {
             throw new IllegalArgumentException("Kun tall over 1");
         }
         int[] a = new int[n];
-        for(int i = 0; i <= n; i++){
+        for(int i = 0; i < n; i++){
             a[i] = i;
         }
         return a;

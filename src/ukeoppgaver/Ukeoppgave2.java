@@ -2,10 +2,6 @@ package ukeoppgaver;
 
 public class Ukeoppgave2 {
 
-    class Program{
-
-
-    }
 
     public static void main(String[] args){
         /*-------1.2.1-------*/
