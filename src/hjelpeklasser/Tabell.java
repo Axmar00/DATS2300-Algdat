@@ -212,7 +212,43 @@ public class Tabell     // Samleklasse for tabellmetoder
 
         return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
 
-    } // nestMaks
+    } //
+
+    public static int[] nestMaks2(int[] a)
+    {
+        int n = a.length;   // tabellens lengde
+
+        if (n < 2) throw   // må ha minst to verdier!
+                new java.util.NoSuchElementException("a.length(" + n + ") < 2!");
+
+        int m = maks(a);  // m er posisjonen til tabellens største verdi
+        bytt(a,m,0);
+
+        int nm;           // nm skal inneholde posisjonen til nest største verdi
+
+        if (m == 0)                            // den største ligger først
+        {
+            nm = maks(a, 1, n);                  // leter i a[1:n>
+        }
+        else if (m == n - 1)                   // den største ligger bakerst
+        {
+            nm = maks(a, 0, n - 1);              // leter i a[0:n-1>
+        }
+        else
+        {
+            int mv = maks(a, 0, m);              // leter i a[0:m>
+            int mh = maks(a, m + 1, n);          // leter i a[m+1:n>
+            nm = a[mh] > a[mv] ? mh : mv;        // hvem er størst?
+        }
+        bytt(a,0,m);
+
+        return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
+
+    } // nestMaks2?? Usikker
+
+    public static void sortering(int[] a){
+
+    }
 
 
 }
