@@ -50,15 +50,12 @@ public class Tabell     // Samleklasse for tabellmetoder
             throw new NoSuchElementException
                     ("fra(" + fra + ") = til(" + til + ") - tomt tabellintervall!");
         }
-        if(a == null){
-            throw new IllegalArgumentException("Arrayet er null");
-        }
 
         int m = fra;              // indeks til største verdi i a[fra:til>
         int maksverdi = a[fra];   // største verdi i a[fra:til>
 
         for (int i = fra + 1; i < til; i++) {
-            if (a[i] < maksverdi) {
+            if (a[i] > maksverdi) {
                 m = i;                // indeks til største verdi oppdateres
                 maksverdi = a[m];     // største verdi oppdateres
             }
@@ -96,7 +93,7 @@ public class Tabell     // Samleklasse for tabellmetoder
         }
     }
 
-    public static void skriv2(int[] a){
+    public static void skriv(int[] a){
         System.out.print(a[0]);
         for(int i = 1; i < a.length; i++) {
             System.out.print(" " + a[i]);
@@ -111,7 +108,7 @@ public class Tabell     // Samleklasse for tabellmetoder
         System.out.println();
     }
 
-    public static void skrivln2(int[] a){
+    public static void skrivln(int[] a){
         System.out.print(a[0]);
         for(int i = 1; i < a.length; i++) {
             System.out.print(" " + a[i]);
@@ -186,6 +183,36 @@ public class Tabell     // Samleklasse for tabellmetoder
             throw new IllegalArgumentException
                     ("v = " + v + ", h = " + h);
     }
+
+    public static int[] nestMaks(int[] a)
+    {
+        int n = a.length;   // tabellens lengde
+
+        if (n < 2) throw   // må ha minst to verdier!
+                new java.util.NoSuchElementException("a.length(" + n + ") < 2!");
+
+        int m = maks(a);  // m er posisjonen til tabellens største verdi
+
+        int nm;           // nm skal inneholde posisjonen til nest største verdi
+
+        if (m == 0)                            // den største ligger først
+        {
+            nm = maks(a, 1, n);                  // leter i a[1:n>
+        }
+        else if (m == n - 1)                   // den største ligger bakerst
+        {
+            nm = maks(a, 0, n - 1);              // leter i a[0:n-1>
+        }
+        else
+        {
+            int mv = maks(a, 0, m);              // leter i a[0:m>
+            int mh = maks(a, m + 1, n);          // leter i a[m+1:n>
+            nm = a[mh] > a[mv] ? mh : mv;        // hvem er størst?
+        }
+
+        return new int[] {m,nm};      // m i posisjon 0 , nm i posisjon 1
+
+    } // nestMaks
 
 
 }
