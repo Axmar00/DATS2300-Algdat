@@ -63,6 +63,46 @@ public class Ukeoppgave2 {
         5
         */
         /*-------1.2.9-------*/
+        /*Deloppgave1
+        Det er 16 bladnoder og 15 indre noder.
+         */
+        /*Deloppgave2
+        Noder = 2^k;
+         */
+
+        /*Deloppgave3
+        Vi finner de totale antall nodene med en for-løkke med 2^k for alle noder.
+        Høyden er k.
+
+         */
+        /*-------1.2.9-------*/
+        /*Deloppgave1
+        a)
+        10, 17, 13, 16, 17, 8, 12, 15, 9, 15
+        17 16 17 15 15
+        17 17 15
+        17 15
+        17
+        17 er største, 15 er nest størst. Vinneren slår ut: 10, 16, 17, 15
+
+        b)
+        5, 11, 7, 13, 2, 9, 10, 8, 3, 14, 6, 12
+        11 13 9 10 14 12
+        13 10 14
+        13 14
+        14
+        14 er størst, og 13 er neststørst. Vinneren slår ut: 3, 12, 13
+
+        c)
+        5, 11, 7, 13, 2, 9, 10, 8, 3, 14, 6, 12, 9, 13, 4, 7, 13, 1, 14
+        11 13 9 10 14 12 13 7 13 14
+        13 10 14 13 14
+        13 14 14
+        14 14
+        14.
+        14 = størst, 13 = neststørst. Vinneren slår ut: 3, 12, 13, 14
+         */
+
 
     }
 }
