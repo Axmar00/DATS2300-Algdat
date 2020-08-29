@@ -103,6 +103,35 @@ public class Ukeoppgave2 {
         14 = størst, 13 = neststørst. Vinneren slår ut: 3, 12, 13, 14
          */
 
+        /*-------1.2.11-------*/
+        /*Deloppgave1
+        A)
+        Ikke komplett. Ikke perfekt. Er fullt. Høyde = 3. 6 bladonder. Turneringstre.
+        B)
+        Ikke komplett, ikke perfekt. Er fullt. Høyde = 3. 6 bladnoder. Turneringstre.
+        C)
+        Komplett, ikke perfekt, ikke fullt. Høyde = 3. 7 bladnoder. Ikke turneringstre.
+        D)
+        Ikke komplett, ikke perfekt, ikke fullt. Høyde = 3. 4 bladnoder. Ikke turneringstre.
+        E)
+        Komplett, ikke perfekt, fullt. Høyde = 3. 7 bladnoder. Turneringstre.
+        F)
+        Ikke komplett, ikke perfekt, ikke fullt. Høyde = 3. 4 bladnoder. Ikke turneringstre.
+         */
+
+        /*Deloppgave2
+        Sjekk Perfect.png, Complete.png og Complete2.png
+         */
+
+        /*Deloppgave3
+        Full.png
+        Finnes 2 forskjellige fulle binærtrær med 5 noder.
+        Finnes 5 forskjellige fulle binærtrær med 7 noder.
+         */
+
+        
+
+
 
     }
 }
