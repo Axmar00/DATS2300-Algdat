@@ -3,11 +3,26 @@ package ukeoppgaver;
 public class Ukeoppgave2 {
 
     public static void kopier(int[] a, int i, int[] b, int j, int length){
-        for(int n = )
+
+        for(int n = i; n < length; n++){
+            b[j] = a[n];
+            if(j == length){
+                j--;
+            }else{
+                j++;
+            }
+
+        }
+        for(int l = 0; l < b.length; l++){
+            System.out.print(b[l] + " ");
+        }
 
     }
 
     public static void main(String[] args){
+        int[] a = {1,2,3,4,5,6};
+        int[] b = new int[6];
+        kopier(a,0,b,b.length,b.length);
         /*-------1.2.1-------*/
         /*Deloppgave1
         public static int min1(int[] a, int fra, int til) {
