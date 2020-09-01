@@ -16,9 +16,5 @@ public class Oppgave2 {
         }
         return ulikeTall;
     }
-    public static void main(String[] args){
-        int[] a = {2,3,3,3,4,5,6,6,7};
-        int[] b = {};
-        System.out.println(antallUlikeSortert(b));
-    }
+
 }

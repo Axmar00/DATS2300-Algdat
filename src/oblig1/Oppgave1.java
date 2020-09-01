@@ -18,8 +18,4 @@ public class Oppgave1 {
         int pMax = a[a.length-1];
         return pMax;
     }
-    public static void main(String[] args){
-        int[] a = {3,4,2,1,3};
-        System.out.print(maks(a));
-    }
 }
