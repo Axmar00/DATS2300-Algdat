@@ -1,7 +1,7 @@
 package oblig1;
 
 public class Oppgave2 {
-    public static int antallUlikeSortert(int[] a) {
+    public static int antallUlikeSortert(int[] a){
         if(a.length==0){
             return 0;
         }
@@ -16,5 +16,4 @@ public class Oppgave2 {
         }
         return ulikeTall;
     }
-
 }

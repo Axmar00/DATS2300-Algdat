@@ -68,7 +68,7 @@ public class Tabell     // Samleklasse for tabellmetoder
         return maks(a,0,a.length);     // kaller metoden over
     }
 
-    public static int min1(int[] a, int fra, int til) {
+    public static int min(int[] a, int fra, int til) {
 
         if (fra < 0 || til > a.length || fra >= til) {
             throw new IllegalArgumentException("Illegalt intervall!");
@@ -84,6 +84,11 @@ public class Tabell     // Samleklasse for tabellmetoder
             }
         }
         return m;
+    }
+
+    public static int min(int[] a)  // bruker hele tabellen
+    {
+        return min(a,0,a.length);     // kaller metoden over
     }
 
     public static void skriv(int[] a, int fra, int til){
@@ -247,8 +252,64 @@ public class Tabell     // Samleklasse for tabellmetoder
     } // nestMaks2?? Usikker
 
     public static void sortering(int[] a){
+    }
+
+    /*-------1.3.1-------*/
+    public static void snu(int[] a, int v, int h)  // snur intervallet a[v:h]
+    {
+        while (v < h) bytt(a, v++, h--);
+    }
+
+    public static void snu(int[] a, int v)  // snur fra og med v og ut tabellen
+    {
+        snu(a, v, a.length - 1);
+    }
+
+    public static void snu(int[] a)  // snur hele tabellen
+    {
+        snu(a, 0, a.length - 1);
+    }
+
+    public static boolean nestePermutasjon(int[] a)
+    {
+        int i = a.length - 2;                    // i starter nest bakerst
+        while (i >= 0 && a[i] > a[i + 1]) i--;   // går mot venstre
+        if (i < 0) return false;                 // a = {n, n-1, . . . , 2, 1}
+
+        int j = a.length - 1;                    // j starter bakerst
+        while (a[j] < a[i]) j--;                 // stopper når a[j] > a[i]
+        bytt(a,i,j); snu(a,i + 1);               // bytter og snur
+
+        return true;                             // en ny permutasjon
+    }
+
+    /*-------1.3.4-------*/
+    public static void utvalgssortering(int[] a)
+    {
+        for (int i = 0; i < a.length - 1; i++)
+            bytt(a, i, min(a, i, a.length));  // to hjelpemetoder
+    }
+    public static void utvalgssortering2(int[] a)
+    {
+        for(int i = 0; i < a.length-1; i++){
+
+        int m = i;
+
+        for (int j = i+1; j < a.length-1; j++) {
+            if (a[j] < a[i]) {
+                m = j;
+            }
+          }
+            int temp = a[m];
+            a[m] = a[i];
+            a[i] = temp;
+        }
 
     }
+
+
+
+
 
 
 }
