@@ -307,9 +307,71 @@ public class Tabell     // Samleklasse for tabellmetoder
 
     }
 
+    /*-------1.3.5-------*/
+    public static int lineærsøk(int[] a, int verdi) // legges i class Tabell
+    {
+        if (a.length == 0 || verdi > a[a.length-1])
+            return -(a.length + 1);  // verdi er større enn den største
+
+        int i = 0; for( ; a[i] < verdi; i++);  // siste verdi er vaktpost
+
+        return verdi == a[i] ? i : -(i + 1);   // sjekker innholdet i a[i]
+    }
+
+    /*-------1.3.6-------*/
+
+    // 2. versjon av binærsøk - returverdier som for Programkode 1.3.6 a)
+    public static int binærsøk(int[] a, int fra, int til, int verdi)
+    {
+        Tabell.fratilKontroll(a.length,fra,til);  // se Programkode 1.2.3 a)
+        int v = fra, h = til - 1;    // v og h er intervallets endepunkter
+
+        while (v <= h)  // fortsetter så lenge som a[v:h] ikke er tom
+        {
+            int m = (v + h)/2;     // heltallsdivisjon - finner midten
+            int midtverdi = a[m];  // hjelpevariabel for  midtverdien
+
+            if (verdi > midtverdi) v = m + 1;        // verdi i a[m+1:h]
+            else if (verdi < midtverdi) h = m - 1;   // verdi i a[v:m-1]
+            else return m;                           // funnet
+        }
+
+        return -(v + 1);   // ikke funnet, v er relativt innsettingspunkt
+    }
+
+    public static int binærsøk(int[] a, int verdi)  // søker i hele a
+    {
+        return binærsøk(a,0,a.length,verdi);  // bruker metoden over
+    }
+
+    // 3. versjon av binærsøk - returverdier som for Programkode 1.3.6 a)
+    public static int binærsøk3(int[] a, int fra, int til, int verdi)
+    {
+        Tabell.fratilKontroll(a.length,fra,til);  // se Programkode 1.2.3 a)
+        int v = fra, h = til - 1;  // v og h er intervallets endepunkter
+
+        while (v < h)  // obs. må ha v < h her og ikke v <= h
+        {
+            int m = (v + h)/2;  // heltallsdivisjon - finner midten
+
+            if (verdi > a[m]) v = m + 1;   // verdi må ligge i a[m+1:h]
+            else  h = m;                   // verdi må ligge i a[v:m]
+        }
+        if (h < v || verdi < a[v]) return -(v + 1);  // ikke funnet
+        else if (verdi == a[v]) return v;            // funnet
+        else  return -(v + 2);                       // ikke funnet
+    }
+    public static int binærsøk3(int[] a, int verdi)  // søker i hele a
+    {
+        return binærsøk3(a,0,a.length,verdi);  // bruker metoden over
+    }
 
 
+    public static void main(String[] args) {
+        int a[] = {1,3,4,4,5,7,7,7,7,8,9,10,10,12,15,15,15};
+        System.out.println(binærsøk(a,6));
 
 
+    }
 
 }

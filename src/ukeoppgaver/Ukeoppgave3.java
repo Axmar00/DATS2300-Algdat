@@ -58,5 +58,48 @@ public class Ukeoppgave3 {
 
      */
 
+    /*-------1.3.5-------*/
+    /*Deloppgave2
+    Den returnerer -1 hvis verdien er mindre enn den minste.
+    Returnerer -1 hvis a.length = 0.
+    lineærsøk(a,2); -1
+    lineærsøk(a,15); -6
+    lineærsøk(a,16); 5
+    lineærsøk(a,40); 14
+    lineærsøk(a,41); -16
+     */
+
+    /*Deloppgave3
+    public static int lineærsøk(int[] a, int verdi) // legges i class Tabell
+    {
+        if (a.length == 0 || verdi > a[a.length-1])
+            return -(a.length + 1);  // verdi er større enn den største
+
+        int i = a.length-1; for( ; a[i] > verdi; i--);  // siste verdi er vaktpost
+
+        return verdi == a[i] ? i : -(i + 1);   // sjekker innholdet i a[i]
+    }
+     */
+
+    /*Deloppgave 5
+
+     */
+
+    /*-------1.3.6-------*/
+    /*Deloppgave3
+    i) Den siste verdien.
+    ii) Den siste verdien.
+    iii) Den siste verdien.
+    iv) Den første verdien.
+     */
+    /*Deloppgave4
+    Testet. Det stemte.
+     */
+
+    /*-------1.3.8-------*/
+    /*Deloppgave3
+
+     */
+
 
 }

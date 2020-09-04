@@ -16,10 +16,4 @@ public class Oppgave4 {
         }
     }
 
-    public static void main(String[] args){
-        int[] a = {6,7,5,4,3,2,1};
-        delsortering(a);
-        System.out.println(Arrays.toString(a));
-
-    }
 }

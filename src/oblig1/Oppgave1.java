@@ -18,4 +18,21 @@ public class Oppgave1 {
         int pMax = a[a.length-1];
         return pMax;
     }
+
+    public static int ombyttinger(int[] a){
+        if(a.length == 0) {
+            throw new NoSuchElementException("Arrayet er tomt.");
+        }
+        int ombyttinger = 0;
+
+        for(int i = 0; i < a.length-1; ++i){
+            if(a[i] > a[i+1]) {
+                int temp = a[i];
+                a[i] = a[i+1];
+                a[i+1] = temp;
+                ombyttinger++;
+            }
+        }
+        return ombyttinger;
+    }
 }
