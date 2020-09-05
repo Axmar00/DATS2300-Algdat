@@ -371,7 +371,7 @@ public class Oblig1Test {
     }
 
     ///// Oppgave 7 //////////////////////////////////////
-   /* @org.junit.jupiter.api.Test
+   @org.junit.jupiter.api.Test
     void oppgave7() {
         int antallFeil = 0;
         String s = null;
@@ -494,7 +494,7 @@ public class Oblig1Test {
         }
 
         assertEquals(0, antallFeil, "Du har for mange feil i oppgave 7");
-    }*/
+    }
 
 
     ///// Hjelpemetoder /////////////////////////////
