@@ -496,7 +496,6 @@ public class Oblig1Test {
         assertEquals(0, antallFeil, "Du har for mange feil i oppgave 7");
     }
 
-
     ///// Hjelpemetoder /////////////////////////////
 
     public static void bytt(int[] a, int i, int j) {

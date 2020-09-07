@@ -42,12 +42,6 @@ public class Oppgave7 {
         return ut;
     }
 
-    public static void main(String[] args){
-        String[] s = {"abe", "cd"};
-
-        System.out.println(flett(s));
-    }
-
 
     public static String flettMedSB(String s, String t){
         //int k = Math.min(s.length(), t.length());  // lengden på den korteste
