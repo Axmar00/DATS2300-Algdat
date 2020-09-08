@@ -446,10 +446,50 @@ public class Tabell     // Samleklasse for tabellmetoder
         }
     }
 
+    /*-------1.4.3-------*/
+    public static void skriv(Object[] a, int fra, int til){
+        fratilKontroll(a.length,fra,til);
+        System.out.print(a[fra]);
+        for(int i = fra+1; i < a.length; i++) System.out.print(" " + a[i]);
+    }
+
+    public static void skriv(Object[] a){
+        skriv(a,0,a.length);
+    }
+
+    public static void skrivln(Object[] a, int fra, int til){
+        skriv(a,fra,til);
+        System.out.println();
+    }
+
+    public static void skrivln(Object[] a){
+        skrivln(a,0,a.length);
+    }
+
+    public static void bytt(Object[] a, int i, int j){
+        Object temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    public static Integer[] randPermInteger(int n)
+    {
+        Integer[] a = new Integer[n];               // en Integer-tabell
+        Arrays.setAll(a, i -> i + 1);               // tallene fra 1 til n
+
+        Random r = new Random();   // hentes fra  java.util
+
+        for (int k = n - 1; k > 0; k--)
+        {
+            int i = r.nextInt(k+1);  // tilfeldig tall fra [0,k]
+            bytt(a,k,i);             // bytter om
+        }
+        return a;  // tabellen med permutasjonen returneres
+    }
+
 
     public static void main(String[] args) {
-        String[] s = {"Sohil","Per","Thanh","Fatima","Kari","Jasmin"};
-        int k = Tabell.maks(s);        // hvilken maks-metode?
-        System.out.println(s[k]);
+
+
     }
 }

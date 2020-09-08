@@ -66,6 +66,4 @@ public class GenericsTest {
         return current_index;
     }
 
-
-
 }

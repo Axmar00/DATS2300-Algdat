@@ -55,5 +55,31 @@ public class Ukeoppgave4 {
     Returnerer -1.
      */
 
+    /*------1.4.3------*/
+    /*Deloppgave2
+    Integer.compare(-1,1) returner -1
+    Integer.compareUnsigned(-1,1) returnerer 1
+     */
+
+    /*Deloppgave7
+    double[] d = {5.7,3.14,7.12,3.9,6.5,7.1,7.11}
+        Double[] d2 = new Double[d.length];
+        //hvert element fra int tabellen legges inn i Integer-tabellen
+        for(int i = 0; i < d2.length; i++) d2[i] = d[i]; //autoboksing
+        Tabell.innsettingssortering(d2);
+        Tabell.skrivln(d2);
+     */
+
+    /*Deloppgave8
+    Gitt disse to metodene:
+    public static void f(int a, Integer b) { }
+    public static void f(Integer a, int b) { }
+    Det er tvetydig. For å kunne bruke noen av metodene må
+    int-verdien konverteres til en Integer. Det ene er ikke riktigere enn det andre.
+    Dersom en metode fjernes, vil den andre kunne kjøres uten problem.
+    Vi kan bestemme hvilken metode vi bruker ved å velge hvilket tall vi konverterer til Integer.
+     */
+
+
 
 }
