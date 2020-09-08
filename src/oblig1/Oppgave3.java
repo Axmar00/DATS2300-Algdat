@@ -1,6 +1,7 @@
 package oblig1;
 
 public class Oppgave3 {
+
     public static int antallUlikeUsortert(int[] a) {
         if(a.length==0){
             return 0;
@@ -22,4 +23,26 @@ public class Oppgave3 {
         }
         return ulikeTall;
     }
+
+    public static int antallUlikeUsortert2(int[] a) {
+        if(a.length==0){
+            return 0;
+        }
+        int unikeElementer = 0;
+        for(int i = 0; i < a.length; i++){
+            boolean unik = false;
+
+            for (int j = 0; j < i; j++){
+                if(a[i] == a[j]){
+                    unik = true;
+                    break;
+                }
+            }
+            if(!unik){
+                unikeElementer++;
+            }
+        }
+        return unikeElementer;
+    }
+
 }

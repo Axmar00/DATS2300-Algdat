@@ -51,10 +51,7 @@ public class Oppgave4 {
     }
 
     public static void main(String[] args){
-        int[] a = {3,2,6,4,5,3,4};
-        int n = a.length-1;
-        delsortering(a);
-        System.out.println(Arrays.toString(a));
+        int[] a ={1,3,5,6,2,3,7};
 
     }
 

@@ -366,12 +366,90 @@ public class Tabell     // Samleklasse for tabellmetoder
         return binærsøk3(a,0,a.length,verdi);  // bruker metoden over
     }
 
+    /*-------1.4.1-------*/
+    public static int maks(double[] a)
+    {
+        int m = 0;                           // indeks til største verdi
+        double maksverdi = a[0];             // største verdi
 
-    public static void main(String[] args) {
-        int a[] = {1,3,4,4,5,7,7,7,7,8,9,10,10,12,15,15,15};
-        System.out.println(binærsøk(a,6));
-
-
+        for (int i = 1; i < a.length; i++) if (a[i] > maksverdi)
+        {
+            maksverdi = a[i];     // største verdi oppdateres
+            m = i;                // indeks til største verdi oppdaters
+        }
+        return m;     // returnerer posisjonen til største verdi
     }
 
+    public static int maks(String[] a)
+    {
+        int m = 0;                          // indeks til største verdi
+        String maksverdi = a[0];            // største verdi
+
+        for (int i = 1; i < a.length; i++) if (a[i].compareTo(maksverdi) > 0)
+        {
+            maksverdi = a[i];  // største verdi oppdateres
+            m = i;             // indeks til største verdi oppdaters
+        }
+        return m;  // returnerer posisjonen til største verdi
+    }
+
+    public static int maks(char[] c)
+    {
+        int m = 0;                           // indeks til største verdi
+        char maksverdi = c[0];             // største verdi
+
+        for (int i = 1; i < c.length; i++) if (c[i] > maksverdi)
+        {
+            maksverdi = c[i];     // største verdi oppdateres
+            m = i;                // indeks til største verdi oppdaters
+        }
+        return m;     // returnerer posisjonen til største verdi
+    }
+
+    public static int maks(Integer[] a)
+    {
+        int m = 0;                          // indeks til største verdi
+        Integer maksverdi = a[0];            // største verdi
+
+        for (int i = 1; i < a.length; i++) if (a[i].compareTo(maksverdi) > 0)
+        {
+            maksverdi = a[i];  // største verdi oppdateres
+            m = i;             // indeks til største verdi oppdaters
+        }
+        return m;  // returnerer posisjonen til største verdi
+    }
+
+    /*------1.4.2-------*/
+    public static <T extends Comparable<? super T>> int maks(T[] a)
+    {
+        int m = 0;                     // indeks til største verdi
+        T maksverdi = a[0];            // største verdi
+
+        for (int i = 1; i < a.length; i++) if (a[i].compareTo(maksverdi) > 0)
+        {
+            maksverdi = a[i];  // største verdi oppdateres
+            m = i;             // indeks til største verdi oppdaters
+        }
+        return m;  // returnerer posisjonen til største verdi
+    }
+
+    public static <T extends Comparable<? super T>> void innsettingssortering(T[] a)
+    {
+        for (int i = 1; i < a.length; i++)  // starter med i = 1
+        {
+            T verdi = a[i];        // verdi er et tabellelemnet
+            int  j = i - 1;        // j er en indeks
+            // sammenligner og forskyver:
+            for (; j >= 0 && verdi.compareTo(a[j]) < 0 ; j--) a[j+1] = a[j];
+
+            a[j + 1] = verdi;      // j + 1 er rett sortert plass
+        }
+    }
+
+
+    public static void main(String[] args) {
+        String[] s = {"Sohil","Per","Thanh","Fatima","Kari","Jasmin"};
+        int k = Tabell.maks(s);        // hvilken maks-metode?
+        System.out.println(s[k]);
+    }
 }

@@ -1,5 +1,6 @@
 package oblig1;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Oppgave1 {
@@ -19,6 +20,7 @@ public class Oppgave1 {
         return pMax;
     }
 
+
     public static int ombyttinger(int[] a){
         if(a.length == 0) {
             throw new NoSuchElementException("Arrayet er tomt.");
@@ -34,5 +36,8 @@ public class Oppgave1 {
             }
         }
         return ombyttinger;
+    }
+    public static void main(String[] args){
+
     }
 }

@@ -2,7 +2,7 @@ package oblig1;
 
 public class Oppgave2 {
     public static int antallUlikeSortert(int[] a){
-        if(a.length==0){
+        if(a.length==0){ //Hvis tabellen er tom, return 0.
             return 0;
         }
         int ulikeTall = 1;
