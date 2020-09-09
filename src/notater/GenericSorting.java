@@ -55,7 +55,7 @@ public class GenericSorting {
     static <T extends Comparable<? super T>>
     void sort(T[] values) {
         //looper over alle untatt siste element
-        for (int i = 0; i < values.length; i++) {
+        for (int i = 0; i < values.length-1; i++) {
             //finn største element i intervallet {1, a.length}
             int max_index = maks(values, i, values.length);
 
