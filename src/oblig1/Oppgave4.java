@@ -5,38 +5,33 @@ import static hjelpeklasser.Tabell.*;
 
 public class Oppgave4 {
 
-    public static int partisjonering(int a[], int v, int h)
+    public static void partisjonering(int a[], int v, int h)
     {
-        int skilleverdi = a[h];
-        int i = (v-1);
-        for (int j = v; j < h; j++)
-        {
-            // Hvis tallet er mindre enn skilleverdi
-            if (a[j] < skilleverdi)
-            {
-                i++;
+        if(h-v <= 0)
+            return;
 
-                // bytt a[i] med a[j]
-                int temp = a[i];
-                a[i] = a[j];
-                a[j] = temp;
+        int pivot = h;    //skilleverdi
+        int placement = v;
+        for(int i = v; i < h; i++){
+            if(a[i] < a[pivot]){
+
+                int temp = a[placement];
+                a[placement] = a[i];
+                a[i] = temp;
+
+                placement++;
             }
         }
-        //Sett skilleverdien tilbake
-        int temp = a[i+1];
-        a[i+1] = a[h];
-        a[h] = temp;
 
-        return i+1;
+        int temp = a[pivot];
+        a[pivot] = a[placement];
+        a[placement] = temp;
+
+
+        partisjonering(a, v, placement-1);
+        partisjonering(a, placement+1, h);
     }
 
-    public static void partisjonering2(int[] a, int v, int h)
-    {
-        if (v >= h) return;  // a[v:h] er tomt eller har maks ett element
-        int k = partisjonering(a, v, h);
-        partisjonering2(a, v, k - 1);     // sorterer intervallet a[v:k-1]
-        partisjonering2(a, k + 1, h);     // sorterer intervallet a[k+1:h]
-    }
 
     public static void delsortering(int[] a){
         int oddetall = 0;
@@ -46,12 +41,14 @@ public class Oppgave4 {
                 oddetall++;
             }
         }
-        partisjonering2(a,0,oddetall-1);
-        partisjonering2(a,oddetall,a.length-1);
+        partisjonering(a,0,oddetall-1);
+        partisjonering(a,oddetall,a.length-1);
     }
 
     public static void main(String[] args){
         int[] a ={1,3,5,6,2,3,7};
+        partisjonering(a,0,a.length-1);
+        System.out.println(Arrays.toString(a));
 
     }
 

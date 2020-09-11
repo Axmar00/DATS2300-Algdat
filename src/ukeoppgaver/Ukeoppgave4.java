@@ -1,5 +1,9 @@
 package ukeoppgaver;
 
+import hjelpeklasser.Tabell;
+
+import java.util.Arrays;
+
 public class Ukeoppgave4 {
     /*-------1.4.1-------*/
     /*Deloppgave2
@@ -80,6 +84,63 @@ public class Ukeoppgave4 {
     Vi kan bestemme hvilken metode vi bruker ved å velge hvilket tall vi konverterer til Integer.
      */
 
+    /*-------1.4.6-------*/
+    /*Deloppgave1
+     Person[] p = new Person[5];                       // en persontabell
+            p[0] = new Person("Kari", "Svendsen");            // Kari Svendsen
+            p[1] = new Person("Boris", "Zukanovic");          // Boris Zukanovic
+            p[2] = new Person("Ali", "Kahn");                 // Ali Kahn
+            p[3] = new Person("Azra", "Zukanovic");           // Azra Zukanovic
+            p[4] = new Person("Kari", "Pettersen");           // Kari Pettersen
 
+            class FornavnKomparator implements Komparator<Person>
+            {
+                public int compare(Person p1, Person p2)        // to personer
+                {
+                    return p1.fornavn().compareTo(p2.fornavn());  // sammenligner fornavn
+                }
+            }
+    //Komparator<Person> c = new FornavnKomparator();
+
+    //Komparator<Person> c = (p1,p2) -> p1.fornavn().compareTo(p2.fornavn());
+    //Tabell.innsettingssortering(p, c);
+            Tabell.innsettingssortering(p,(p1,p2) -> p1.fornavn().compareTo(p2.fornavn()));
+
+            System.out.println(Arrays.toString(p));           // Utskrift av tabellen p
+     */
+
+    /*Deloppgave3
+    Tabell.innsettingssortering(s,(s1,s2) ->
+                {
+                    int k = s1.studium().compareTo(s2.studium());
+                    if(k!=0) return k;
+                      k = s1.fornavn().compareTo(s2.fornavn());
+                    if(k!=0) return k;
+                    return s1.etternavn().compareTo(s2.etternavn());
+                }
+
+                );
+     */
+
+    /*Deloppgave5
+    String[] s = {"21","18","8","13","20","6","16","25","3","10"};
+        Tabell.innsettingssortering(s, (x,y) ->
+        {
+            int k = x.length() - y.length();
+            return k!=0 ? k : x.compareTo(y);
+        }
+        );
+
+        System.out.println(Arrays.toString(s));
+     */
+
+    /*Deloppgave7
+
+    Komparator<Student> c = (s1,s2) ->
+        {
+            int cmp = s1.studium().name().compareTo(s2.studium().name());
+            return cmp != 0 ? cmp : s1.compareTo(s2);
+        };
+     */
 
 }
