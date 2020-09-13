@@ -122,6 +122,30 @@ public class Ukeoppgave4 {
                 );
      */
 
+     /*Deloppgave4
+     public static <T> int maks(T[] a, int fra, int til, Komparator<? super T> c)
+    {
+        fratilKontroll(a.length,fra,til);
+
+        if (fra == til) throw new NoSuchElementException
+                ("fra(" + fra + ") = til(" + til + ") - tomt tabellintervall!");
+        int m = fra;                     // indeks til største verdi
+        T maksverdi = a[fra];            // største verdi
+
+        for (int i = fra + 1; i < til; i++) if (c.compare(a[i],maksverdi) > 0)
+        {
+            maksverdi = a[i];  // største verdi oppdateres
+            m = i;             // indeks til største verdi oppdaters
+        }
+        return m;  // returnerer posisjonen til største verdi
+    }
+
+    public static <T> int maks(T[] a, Komparator<? super T> c)
+    {
+        return maks(a, 0, a.length, c);  // kaller metoden nedenfor
+    }
+      */
+
     /*Deloppgave5
     String[] s = {"21","18","8","13","20","6","16","25","3","10"};
         Tabell.innsettingssortering(s, (x,y) ->
@@ -142,5 +166,88 @@ public class Ukeoppgave4 {
             return cmp != 0 ? cmp : s1.compareTo(s2);
         };
      */
+
+    /*-------1.4.7-------*/
+    /*Deloppgave2
+    Double[] d = {5.7,3.14,7.12,3.9,6.5,7.1,7.11};
+        Tabell.innsettingssortering(d, Komparator.naturligOrden());
+        System.out.println(Arrays.toString(d));
+        Tabell.innsettingssortering(d, Komparator.omvendtOrden());
+        System.out.println(Arrays.toString(d));
+     */
+
+    /*Deloppgave3
+    Boolean[] b = {false, true, true, false, false, true, false, true};
+        Tabell.innsettingssortering(b,Komparator.naturligOrden());
+        System.out.println(Arrays.toString(b));
+     */
+
+    /*Deloppgave4
+    Person[] p = new Person[5];                       // en persontabell
+        p[0] = new Person("Kari", "Svendsen");            // Kari Svendsen
+        p[1] = new Person("Boris", "Zukanovic");          // Boris Zukanovic
+        p[2] = new Person("Ali", "Kahn");                 // Ali Kahn
+        p[3] = new Person("Azra", "Zukanovic");           // Azra Zukanovic
+        p[4] = new Person("Kari", "Pettersen");           // Kari Pettersen
+
+        class FornavnKomparator implements Komparator<Person>
+        {
+            public int compare(Person p1, Person p2)        // to personer
+            {
+                return p1.etternavn().compareTo(p2.etternavn());  // sammenligner fornavn
+            }
+        }
+        Tabell.innsettingssortering(p, Komparator.orden(Person::etternavn));                // se Programkode 1.4.6 b)
+        System.out.println(Arrays.toString(p));
+     */
+
+    /*Deloppgave5
+    String[] s = {"Lars","Anders","Bodil","Kari","Per","Berit"};
+        Tabell.innsettingssortering(s, (s1,s2) -> s2.length() - s1.length());
+        Tabell.innsettingssortering(s, Komparator.orden(x -> -x.length()));
+        System.out.println(Arrays.toString(s));
+     */
+
+    /*------1.4.8------*/
+    /*Deloppgave2
+    Lambda-uttrykket x -> x representerer det som i matematikk kalles identitetsfunksjonen,
+     dvs. funksjonen f som er slik at f(x) = x. Det betyr at det ordnes mhp. x
+     og det er samme som naturlig ordning siden x er en instans av en sammenlignbar type.
+     Dermed er Komparator.orden(x -> x) og Komparator.naturligOrden() det samme.
+     */
+
+    /*Deloppgave4
+    String[] s = {"21","18","8","13","20","6","16","25","3","10"};
+        Tabell.innsettingssortering(s, Komparator.orden(String::length).deretter(x -> x));
+
+        System.out.println(Arrays.toString(s));
+     */
+
+    /*-------1.4.9-------*/
+    /*Deloppgave3
+    b)
+    Tabell.innsettingssorteringC(punkt, (p1, p2) ->
+                {
+                    int d = p1.x - p2.x;    // forskjellen mellom x-koordinatene
+                    if (d != 0) return d;
+                    return p1.y - p2.y;     // forskjellen mellom x-koordinatene
+                }
+        );
+
+    e)
+    Tabell.innsettingssortering(punkt,
+    Comparator.comparingDouble(Point::getX).thenComparingDouble(Point::getY));
+
+    f)
+    Tabell.innsettingssortering(punkt, (p1,p2) ->
+    {
+      int d = (p1.x*p1.x + p1.y*p1.y) - (p2.x*p2.x + p2.y*p2.y);
+      if (d != 0) return d; else return p1.y - p2.y;
+    }
+  );
+
+     */
+
+
 
 }
