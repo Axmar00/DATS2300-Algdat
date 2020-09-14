@@ -1,4 +1,4 @@
-package notater;
+package notater.uke3sortering;
 
 public class BTNode {
 

@@ -1,4 +1,4 @@
-package notater;
+package notater.uke4generisk;
 
 //07.09.2020 TernaryIf
 

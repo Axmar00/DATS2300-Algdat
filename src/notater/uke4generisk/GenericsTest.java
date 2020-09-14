@@ -1,4 +1,4 @@
-package notater;
+package notater.uke4generisk;
 
 public class GenericsTest {
     public static void main(String[] args){

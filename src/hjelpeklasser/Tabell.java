@@ -708,28 +708,6 @@ public class Tabell     // Samleklasse for tabellmetoder
     }
 
     public static void main(String[] args) {
-        int[] x = {3,5,6,2,6,1,4,7,7,4};         // x-koordinater
-        int[] y = {3,6,3,5,5,2,1,4,2,4};         // y-koordinater
-
-        Point[] punkt = new Point[x.length];     // en punkttabell
-        for (int i = 0; i < punkt.length; i++) punkt[i] = new Point(x[i],y[i]);
-
-        for (Point p : punkt) System.out.print("(" + p.x + "," + p.y + ") ");
-        System.out.println();                    // linjeskift
-
-        Tabell.innsettingssorteringC(punkt,
-                Comparator.comparingDouble(Point::getX).thenComparingDouble(Point::getY));
-
-        for (Point p : punkt) System.out.print("(" + p.x + "," + p.y + ") ");
-
-        Tabell.innsettingssortering(punkt, (p1,p2) ->
-                {
-                    int d = (p1.x*p1.x + p1.y*p1.y) - (p2.x*p2.x + p2.y*p2.y);
-                    if (d != 0) return d; else return p1.y - p2.y;
-                }
-        );
-
-
 
     }
 }

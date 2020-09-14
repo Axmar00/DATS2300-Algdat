@@ -1,4 +1,4 @@
-package notater;
+package notater.uke4generisk;
 
 import java.util.Arrays;
 
