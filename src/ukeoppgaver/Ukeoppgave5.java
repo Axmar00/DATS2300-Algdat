@@ -85,7 +85,28 @@ public class Ukeoppgave5 {
      */
 
     /*-------1.5.2-------*/
-    
+    /*Deloppgave2
+    public static int euklid(int a, int b)
+    {
+        System.out.println("euklid(" + a + "," + b + ") starter!");
+        if (b == 0) {
+            System.out.println("euklid(" + a + "," + b + ") er ferdig!");
+            return a;
+        }
+        int r = a % b;            // r er resten
+        int k =  euklid(b,r);       // rekursivt kall
+        System.out.println("euklid(" + a + "," + b + ") er ferdig!");
+        return k;
+    }
+     */
+
+    /*Deloppgave6
+    15.
+    0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610
+     */
+
+
+
     public static void main(String[] args) {
 
     }
