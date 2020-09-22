@@ -2,6 +2,7 @@ package hjelpeklasser;
 
 
 import java.util.Iterator;
+import java.util.Objects;
 
 public class TabellListe<T> implements Liste<T>
   {
@@ -42,6 +43,15 @@ public class TabellListe<T> implements Liste<T>
 
     @Override
     public void nullstill() {
+      if(a.length > 10){
+        a = (T[])new Object[10];
+      }
+      else{
+        for(int i = 0; i < antall; i++){
+          a[i] = null;
+        }
+        antall = 0;
+      }
 
     }
 
@@ -72,6 +82,16 @@ public class TabellListe<T> implements Liste<T>
 
     @Override
     public boolean fjern(T verdi) {
+      Objects.requireNonNull(verdi, "null er ulovlig!");
+
+      for(int i = 0; i < antall; i++){
+        if(a[i].equals(verdi)){
+          antall--;
+          System.arraycopy(a,i+1,a,i,antall-i);
+          a[antall] = null;
+          return true;
+        }
+      }
       return false;
     }
 
@@ -110,12 +130,7 @@ public class TabellListe<T> implements Liste<T>
     }
 
     public static void main(String[] args) {
-      String[] s ={"Sohil",null,"Per","Thanh","Ann","Kari","Jon",null};
-      Liste<String> list = new TabellListe<>(s);
-      System.out.println(list.hent(4));
-      System.out.println(list.indeksTil("Kari"));
-      System.out.println(list.inneholder("Ann"));
-      System.out.println(list.toString());
+
     }
 
   }
