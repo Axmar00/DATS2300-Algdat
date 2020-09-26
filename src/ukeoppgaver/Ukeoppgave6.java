@@ -26,6 +26,19 @@ public class Ukeoppgave6 {
     }
      */
 
-    /*-------3.2.3-------*/
+    /*-------3.2.5-------*/
+    /*Delopg2
+    String[] s = {"Jens","Per","Kari","Ole","Berit","Jens","Anne","Nils","Siv"};
+
+      Liste<String> liste = new TabellListe<>();
+
+      for(String navn : s) liste.leggInn(navn);
+      System.out.println("Henter " + liste.hent(2));
+      System.out.println("Oppdaterer Ole til " + liste.oppdater(3,"Ola"));
+      System.out.println(liste.fjern(4) + " er sletta");
+      System.out.println(liste);
+      liste.fjernHvis(x -> x.equals("Jens"));
+      liste.forEach(x -> System.out.print(x + " "));
+     */
 
 }
