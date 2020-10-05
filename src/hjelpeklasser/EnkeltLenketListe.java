@@ -297,11 +297,11 @@ public class EnkeltLenketListe<T> implements Liste<T>
     public void forEachRemaining(Consumer<? super T> handling)
     {
         Objects.requireNonNull(handling, "handling er null!");
-        while (p != null)
+       /* while (p != null)
         {
             handling.accept(p.verdi);
             p = p.neste;
-        }
+        }*/
     }
 
     @Override
