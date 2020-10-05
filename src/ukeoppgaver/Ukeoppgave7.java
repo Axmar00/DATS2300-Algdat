@@ -43,6 +43,6 @@ public class Ukeoppgave7 {
     /*Delopg6
     Usikker på hvordan, men ja det er mulig.
      */
-    
+
 
 }
