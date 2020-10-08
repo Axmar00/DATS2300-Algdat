@@ -44,5 +44,10 @@ public class Ukeoppgave7 {
     Usikker på hvordan, men ja det er mulig.
      */
 
+    /*-------4.2.1-------*/
+    /*Delopg2
+    a) Nei. b) Ja. c)Ja
+     */
+
 
 }

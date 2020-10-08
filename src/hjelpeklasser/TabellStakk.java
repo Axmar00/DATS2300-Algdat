@@ -71,8 +71,8 @@ public class TabellStakk<T> implements Stakk<T>
     public String toString(){
         if(tom()) return "[]";
         StringBuilder s = new StringBuilder();
-        s.append("[").append(a[antall-1]);
-        for(int i = antall-2; i >= 0; i--) {
+        s.append("[").append(a[0]);
+        for(int i = 1; i < antall; i++) {
             if(!a[i].equals(null)) {
                 s.append(",").append(" ").append(a[i]);
             }
@@ -90,10 +90,89 @@ public class TabellStakk<T> implements Stakk<T>
         while(!C.tom()) A.leggInn(C.taUt());
     }
 
+    public static <T> void snu2(Stakk<T> A){
+        Stakk<T> B = new TabellStakk<>();               //Hjelpestakk B
+        int n = A.antall() - 1;
+
+        for(int i = n; i > 0; i--){
+            T v = A.taUt();
+            for (int j = 0; j < n; j++) B.leggInn(A.taUt());
+            A.leggInn(v);
+            while(!B.tom()) A.leggInn(B.taUt());
+            n--;
+        }
+    }
+
     public static <T> void kopier(Stakk<T> A, Stakk<T> B){
-        Stakk<T> C = new TabellStakk<>();
-        T v;
-        for()
+        Stakk<T> C = new TabellStakk<T>();
+
+        while(!A.tom()) C.leggInn(A.taUt());
+        while(!C.tom()){
+           T v = C.taUt();
+            A.leggInn(v);
+            B.leggInn(v);
+        }
+    }
+
+    public static <T> void kopier2(Stakk<T> A, Stakk<T> B){
+        int n = A.antall();
+
+        while(n > 0){
+            for(int i = 1; i < n; i++)B.leggInn(A.taUt());
+            T v = A.kikk();
+            for(int i = 1; i < n; i++){
+                A.leggInn(B.taUt());
+            }
+            B.leggInn(v);
+            n--;
+        }
+    }
+
+    public static <T> void sorter(Stakk<T> A, Comparator<? super T> c){
+       Stakk<T> B = new TabellStakk<T>();
+        int n = A.antall();
+
+        for(int i = 0; i < A.antall(); i++){
+            T v = A.taUt();
+            for(int j = 1; j < n; j++) {
+                if (c.compare(v, A.kikk()) <= 0) {
+                    B.leggInn(v);
+                    v = A.taUt();
+                } else {
+                    B.leggInn(A.taUt());
+                }
+            }
+            A.leggInn(v);
+            while(!B.tom()) A.leggInn(B.taUt());
+            n--;
+        }
+        //Fra fasiten
+        /*Stakk<T> B = new TabellStakk<T>();
+        T temp; int n = 0;
+
+        while (!A.tom())
+        {
+            temp = A.taUt();
+            n = 0;
+            while (!B.tom() && c.compare(temp,B.kikk()) < 0)
+            {
+                n++; A.leggInn(B.taUt());
+            }
+            B.leggInn(temp);
+            for (int i = 0; i < n; i++) B.leggInn(A.taUt());
+        }
+
+        while (!B.tom()) A.leggInn(B.taUt());*/
+    }
+
+    public static void main(String[] args) {
+        TabellStakk s = new TabellStakk();
+        int[] arr = {5,6,4,2,3,1};
+        for(int i = 0; i < arr.length; i++) s.leggInn(arr[i]);
+        System.out.println(s);
+
+        sorter(s,Comparator.naturalOrder());
+        System.out.println(s);
     }
 
 }  // class TabellStakk
