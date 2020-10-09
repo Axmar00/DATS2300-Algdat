@@ -50,7 +50,10 @@ public class TabellKø<T> implements Kø<T>
 
     @Override
     public T kikk() {
-        return null;
+        if(fra == til)    //Sjekker om tabellen er tom
+            throw new NoSuchElementException("Tabellen er tom!");
+
+        return a[fra];  //Returnerer den øverste verdien
     }
 
     @Override
@@ -72,11 +75,72 @@ public class TabellKø<T> implements Kø<T>
 
     @Override
     public boolean tom() {
-        return false;
+        return fra == til;
     }
 
     @Override
     public void nullstill() {
+        while(fra != til){
+            a[fra++] = null;
+            if(fra == a.length) fra = 0;
+        }
+    }
+
+    @Override
+    public String toString(){
+        if(tom()) return "[]";
+        int helpFra = fra;
+
+        StringBuilder s = new StringBuilder();
+        s.append("[").append(a[helpFra]);
+        helpFra++;
+        if(helpFra == a.length) helpFra = 0;
+
+        while(helpFra != til){
+            s.append(",").append(" ").append(a[helpFra]);
+            helpFra++;
+            if(helpFra == a.length) helpFra = 0;
+        }
+        s.append("]");
+        return s.toString();
+    }
+
+    public int indeksTil(T verdi){
+        int hFra = fra;
+
+        while(hFra != til){
+            if(verdi.equals(a[hFra])) {
+                return fra <= hFra ? hFra - fra : a.length + hFra - fra;
+            }
+            hFra++;
+            if(hFra == a.length) hFra = 0;
+        }
+        return -1;      //ikke funnet
+    }
+
+    public static <T> void snu(Stakk<T> A) {
+        Kø<T> B = new TabellKø<T>();     //Hjelpekø B
+
+        while(!A.tom()) B.leggInn(A.taUt());
+        while(!B.tom()) A.leggInn(B.taUt());;
+    }
+
+    public static <T> void snu(Kø<T> A){
+        Stakk<T> B = new TabellStakk<T>();
+
+        while(!A.tom()) B.leggInn(A.taUt());
+        while(!B.tom()) A.leggInn(B.taUt());
+    }
+
+    public static void main(String[] args) {
+        TabellKø<Integer> k = new TabellKø<>();
+        int[] arr = {1,2,3,4,5,6};
+        for(int i = 0; i < arr.length; i++) k.leggInn(arr[i]);
+        System.out.println(k);
+        k.snu(k);
+        System.out.println(k);
+
+
 
     }
 } // class TabellKø
