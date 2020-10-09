@@ -89,17 +89,24 @@ public class TabellKø<T> implements Kø<T>
     @Override
     public String toString(){
         if(tom()) return "[]";
+
+      /*  String s2 ="[";
+        s2 += a[fra];
+        for(int i = fra+1; i < til; i++){
+            s2 += ", " + a[i & a.length];
+        }
+        s2 += "]";
+        */
+
         int helpFra = fra;
 
         StringBuilder s = new StringBuilder();
         s.append("[").append(a[helpFra]);
         helpFra++;
-        if(helpFra == a.length) helpFra = 0;
 
         while(helpFra != til){
-            s.append(",").append(" ").append(a[helpFra]);
+            s.append(", ").append(a[helpFra % a.length]);
             helpFra++;
-            if(helpFra == a.length) helpFra = 0;
         }
         s.append("]");
         return s.toString();
@@ -137,8 +144,8 @@ public class TabellKø<T> implements Kø<T>
         int[] arr = {1,2,3,4,5,6};
         for(int i = 0; i < arr.length; i++) k.leggInn(arr[i]);
         System.out.println(k);
-        k.snu(k);
-        System.out.println(k);
+       // k.snu(k);
+        //System.out.println(k);
 
 
 
