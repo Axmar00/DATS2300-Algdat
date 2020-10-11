@@ -6,7 +6,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
-public class EnkeltLenketListe<T> implements Liste<T>
+public class EnkeltLenketListe<T> implements Liste<T>, Kø<T>
 {
     private static final class Node<T>       // en indre nodeklasse
     {
@@ -73,6 +73,16 @@ public class EnkeltLenketListe<T> implements Liste<T>
         endringer++;     //en endring har blitt gjort
         antall++;        // en mer i listen
         return true;     // vellykket innlegging
+    }
+
+    @Override
+    public T kikk() {
+        return null;
+    }
+
+    @Override
+    public T taUt() {
+        return null;
     }
 
     @Override
@@ -243,7 +253,7 @@ public class EnkeltLenketListe<T> implements Liste<T>
             p = p.neste;
 
             while(p != null){
-                s.append(",").append(" ").append(p.verdi);
+                s.append(", ").append(p.verdi);
                 p = p.neste;
             }
         }
