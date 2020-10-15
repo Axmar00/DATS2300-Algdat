@@ -45,7 +45,7 @@ public class Ukeoppgave8 {
 
     /*-------5.1.5------*/
     /*Delopg2
-    int[] pos = {1,2,3,5,6,7,10,11,12,13,21,24,25,42,43};
+      int[] pos = {1,2,3,5,6,7,10,11,12,13,21,24,25,42,43};
       char[] c = "DIHLOBAENGKMJFC".toCharArray();
       BinTre<Character> tre1 = new BinTre<Character>();
       for(int i = 0; i < pos.length; i++)tre1.leggInn(pos[i],c[i]);
@@ -92,5 +92,115 @@ public class Ukeoppgave8 {
         tre2.leggInn(2*n-1,2*i+1);
         n *= 2;
      */
+
+    /*-------5.1.6-------*/
+    /*Delopg1
+    Tre1:D IH LOB AENG KMJ FC
+    Tre2: E IB GAHK LODN MCJF
+     */
+
+    /*Delopg4
+     BinTre<Character> tre = new BinTre<>();
+      int[] posisjon = {1, 2,3,4,5,6,7,10,11,13,14,22,23,28,29};  // posisjoner og
+      String verdi = "EIBGAHKLODNMCJF";              // verdier i nivåorden
+
+      for(int i = 0; i < posisjon.length;i++) tre.leggInn(posisjon[i],verdi.charAt(i));
+
+      StringJoiner sj = new StringJoiner(", ","[","]");
+
+      tre.nivåorden(c -> sj.add(c.toString()));
+
+      System.out.println(sj);
+     */
+
+    /*Delopg5
+    BinTre<Character> tre = new BinTre<>();
+      int[] posisjon = {1, 2,3,4,5,6,7,10,11,13,14,22,23,28,29};  // posisjoner og
+      String verdi = "EIBGAHKLODNMCJF";              // verdier i nivåorden
+
+      for(int i = 0; i < posisjon.length;i++) tre.leggInn(posisjon[i],verdi.charAt(i));
+
+      StringJoiner sj = new StringJoiner(", ","[","]");
+
+
+      tre.nivåorden(c ->{
+        if(c.compareTo('D') > 0){     //Kan også bruke c > 'D'
+          sj.add(c.toString());
+        }
+      });
+
+      System.out.println(sj);
+     */
+
+    /*Delopg8
+    int[] posisjon = {1,2,3,4,5,6,7,10,11,13,14,22,23,28,29};  // posisjoner og
+      String[] verdi = "EIBGAHKLODNMCJF".split("");              // verdier i nivåorden
+
+      BinTre<String> tre = new BinTre<>(posisjon, verdi);        // en konstruktør
+      String[] a = {"a"};
+      tre.nivåorden(c1 -> {
+                if(c1.compareTo(a[0]) > 0) a[0] = c1;
+              }
+              );
+      System.out.println(a[0]);
+     */
+
+    /*Delopg10
+    int[] p = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,17,18,19,21,23,26,27,29};
+      Character[] c = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V'};
+      BinTre<Character> tre = new BinTre<>(p,c);
+
+      int[] nivåer = tre.nivåer();
+      System.out.println("Nivåer: " + Arrays.toString(nivåer));
+      System.out.println("Treets bredde: " + nivåer[Tabell.maks(nivåer)]);
+      System.out.println("Treets høyde: " + (nivåer.length - 1));
+     */
+
+    /*-------5.1.7-------*/
+    /*Delopg1
+    Tre1:
+        *Pre:  D I L A K F C E H O N M J G B
+        *In:   I A F K C L E D M N J O G H B
+        *Post: F C K A E L I M J N G O B H D
+
+    Tre2:
+        *Pre:  E I G A L O M C B H D K N J F
+        *In:   G I L A M O C E H D B J N F K
+        *Post: G L M C O A I D H J F N K B E
+     */
+
+    /*Delopg2
+    Tre1:
+        *Pre:  O G K I D P M F R A B E N C Q H L J
+        *In:
+        *Post:
+
+    Tre2:
+        *Pre:
+        *In:
+        *Post:
+     */
+
+    /*Delopg5
+    int[] posisjon = {1,2,3,4,5,6,7,10,11,13,14,22,23,28,29};  // posisjoner og
+      String[] verdi = "ABICDJLEFKMGHNO".split("");              // verdier i nivåorden
+      BinTre<String> tre = new BinTre<>(posisjon, verdi);        // en konstruktør
+
+      StringJoiner s = new StringJoiner(", " ,"[", "]");         // StringJoiner
+      tre.preorden(tegn -> s.add(tegn));                         // tegn = String
+      System.out.println(s);
+     */
+
+    /*Delopg6
+    int[] posisjon = {1,2,3,4,5,6,7,10,11,13,14,22,23,28,29};  // posisjoner og
+      String[] verdi = "HBKADIOCFJMEGLN".split("");              // verdier i nivåorden
+      BinTre<String> tre = new BinTre<>(posisjon, verdi);        // en konstruktør
+
+      StringJoiner s = new StringJoiner(", " ,"[", "]");         // StringJoiner
+      tre.inorden(tegn -> s.add(tegn));                         // tegn = String
+      System.out.println(s);
+     */
+
+
 
 }

@@ -1,5 +1,8 @@
 package hjelpeklasser;
 
+import java.util.Arrays;
+import java.util.StringJoiner;
+
 public class BinTre<T>           // et generisk binærtre
   {
     private static final class Node<T>  // en indre nodeklasse
@@ -131,6 +134,108 @@ public class BinTre<T>           // et generisk binærtre
 
       antall--;                       // fjerner en verdi fra treet
       return p.verdi;
+    }
+
+    public void nivåorden(Oppgave<? super T> oppgave)    // ny versjon
+    {
+      if (tom()) return;                   // tomt tre
+      Kø<Node<T>> kø = new TabellKø<>();   // Se Avsnitt 4.2.3
+      kø.leggInn(rot);                     // legger inn roten
+
+      while (!kø.tom())                    // så lenge køen ikke er tom
+      {
+        Node<T> p = kø.taUt();             // tar ut fra køen
+        oppgave.utførOppgave(p.verdi);     // den generiske oppgaven
+
+        if (p.venstre != null) kø.leggInn(p.venstre);
+        if (p.høyre != null) kø.leggInn(p.høyre);
+      }
+    }
+
+    public int[] nivåer()   // returnerer en tabell som inneholder nivåantallene
+    {
+      if (tom()) return new int[0];       // en tom tabell for et tomt tre
+
+      int[] a = new int[8];               // hjelpetabell
+      Kø<Node<T>> kø = new TabellKø<>();  // hjelpekø
+      int nivå = 0;                       // hjelpevariabel
+
+      kø.leggInn(rot);    // legger roten i køen
+
+      while (!kø.tom())   // så lenge som køen ikke er tom
+      {
+        // utvider a hvis det er nødvendig
+        if (nivå == a.length) a = Arrays.copyOf(a,2*nivå);
+
+        int k = a[nivå] = kø.antall();  // antallet på dette nivået
+
+        for (int i = 0; i < k; i++)  // alle på nivået
+        {
+          Node<T> p = kø.taUt();
+
+          if (p.venstre != null) kø.leggInn(p.venstre);
+          if (p.høyre != null) kø.leggInn(p.høyre);
+        }
+
+        nivå++;  // fortsetter på neste nivå
+      }
+
+      return Arrays.copyOf(a, nivå);  // fjerner det overflødige
+    }
+
+    private static <T> void preorden(Node<T> p, Oppgave<? super T> oppgave)
+    {
+      oppgave.utførOppgave(p.verdi);                       // utfører oppgaven
+
+      if (p.venstre != null) preorden(p.venstre,oppgave);  // til venstre barn
+      if (p.høyre != null) preorden(p.høyre,oppgave);      // til høyre barn
+    }
+
+    public void preorden(Oppgave<? super T> oppgave)
+    {
+      if (!tom()) preorden(rot,oppgave);  // sjekker om treet er tomt
+    }
+
+    private static <T> void inorden(Node<T> p, Oppgave<? super T> oppgave)
+    {
+      if (p.venstre != null) inorden(p.venstre,oppgave);
+      oppgave.utførOppgave(p.verdi);
+      if (p.høyre != null) inorden(p.høyre,oppgave);
+    }
+
+    public void inorden(Oppgave <? super T> oppgave)
+    {
+      if (!tom()) inorden(rot,oppgave);
+    }
+
+    private static <T> void postorden(Node<T> p, Oppgave<? super T> oppgave)
+    {
+      if (p.venstre != null) postorden(p.venstre,oppgave);  // til venstre barn
+      if (p.høyre != null) postorden(p.høyre,oppgave);      // til høyre barn
+      oppgave.utførOppgave(p.verdi);                       // utfører oppgaven
+    }
+
+    public void postorden(Oppgave<? super T> oppgave)
+    {
+      if (rot != null) postorden(rot,oppgave);
+    }
+
+    public void nullstill(){
+      if(!tom()) nullstill(rot);
+      rot = null;
+      antall = 0;
+    }
+
+    private void nullstill(Node<T> p){
+      if(p.venstre != null){
+        nullstill(p.venstre);
+        p.venstre = null;
+      }
+      if(p.høyre != null){
+        nullstill(p.høyre);
+        p.høyre = null;
+      }
+      p.verdi = null;
     }
 
     public static void main(String[] args) {
