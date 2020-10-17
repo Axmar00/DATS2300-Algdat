@@ -201,6 +201,59 @@ public class Ukeoppgave8 {
       System.out.println(s);
      */
 
+    /*-------5.1.10-------*/
+    /*Delopg1
+    while (true)
+    {
+      oppgave.utførOppgave(p.verdi);
+      if (p.venstre != null) preorden(p.venstre,oppgave);
+      if (p.høyre == null) return;      // metodekallet er ferdig
+      p = p.høyre;
+    }
+     */
+
+    /*Delopg4
+    while (true)
+    {
+      if (p.venstre != null) inorden(p.venstre,oppgave);
+      oppgave.utførOppgave(p.verdi);
+      if (p.høyre == null) return;      // metodekallet er ferdig
+      p = p.høyre;
+    }
+     */
+
+    /*-------5.1.11-------*/
+    /*Delopg5
+      Min måte:
+      int[] posisjon = {1,2,3,4,5,6,7,8,9,10};             // posisjoner og
+      String[] verdi = "ABCDEFGHIJ".split("");             // verdier i nivåorden
+
+      BinTre<String> tre = new BinTre<>(posisjon, verdi);  // konstruktør
+
+      System.out.println();
+      for(String s : tre){
+        if(s.equals("F")) {
+          System.out.println("Stopper.");
+          return;
+        }
+        System.out.print(s + " ");
+      }
+
+      Fasiten:
+      char c = 'F';
+
+  for (Iterator<Character> i = tre.iterator(); i.hasNext(); )
+  {
+    if (i.next() == c)
+    {
+      System.out.println("Fant " + c + "!" );
+      break;
+    }
+  }
+     */
+
+
+
 
 
 }
