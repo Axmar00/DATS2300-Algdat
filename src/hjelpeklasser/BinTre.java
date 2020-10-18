@@ -4,6 +4,7 @@ import java.util.*;
 
 public class BinTre<T> implements Iterable<T>           // et generisk binærtre
   {
+
     private static final class Node<T>  // en indre nodeklasse
     {
       private T verdi;            // nodens verdi
@@ -473,6 +474,81 @@ public class BinTre<T> implements Iterable<T>           // et generisk binærtre
       return new PreordenIterator();
     }
 
+    private static int antall2(Node<?> p)  // ? betyr vilkårlig type
+    {
+      if (p == null) return 0;            // et tomt tre har 0 noder
+
+      return 1 + antall2(p.venstre) + antall2(p.høyre);
+    }
+
+    public int antall2()
+    {
+      return antall2(rot);                 // kaller hjelpemetoden
+    }
+
+    private static int høyde(Node<?> p)  // ? betyr vilkårlig type
+    {
+      if (p == null) return -1;          // et tomt tre har høyde -1
+
+      return 1 + Math.max(høyde(p.venstre), høyde(p.høyre));
+    }
+
+    public int høyde()
+    {
+      return høyde(rot);                 // kaller hjelpemetoden
+    }
+
+    private static <T> boolean inneholder(Node<T> p, T verdi)
+    {
+      if (p == null) return false;    // kan ikke ligge i et tomt tre
+      return verdi.equals(p.verdi) || inneholder(p.venstre,verdi)
+              || inneholder(p.høyre,verdi);
+    }
+
+    public boolean inneholder(T verdi)
+    {
+      return inneholder(rot,verdi);   // kaller den private metoden
+    }
+
+    private static <T> int posisjon(Node<T> p, int k, T verdi)
+    {
+      if (p == null) return -1;                  // ligger ikke i et tomt tre
+      if (verdi.equals(p.verdi)) return k;       // verdi ligger i p
+      int i = posisjon(p.venstre,2*k,verdi);     // leter i venstre subtre
+      if (i > 0) return i;                       // ligger i venstre subtre
+      return posisjon(p.høyre,2*k+1,verdi);      // leter i høyre subtre
+    }
+
+    public int posisjon(T verdi)
+    {
+      return posisjon(rot,1,verdi);  // kaller den private metoden
+    }
+
+    private static int antallBladnoder(Node<?> p){
+      if (p.venstre == null && p.høyre == null) return 1;
+
+      return (p.venstre == null ? 0 : antallBladnoder(p.venstre))
+              + (p.høyre == null ? 0 : antallBladnoder(p.høyre));
+
+    }
+
+    public int antallBladnoder(){
+      return rot == null ? 0 : antallBladnoder(rot);
+    }
+
+    private static void makspos(Node<?> p, int pos, IntObject o){
+      if (pos > o.get()) o.set(pos);
+      if (p.venstre != null) makspos(p.venstre, 2*pos, o);
+      if (p.høyre != null) makspos(p.høyre, 2*pos + 1, o);
+    }
+
+    public int makspos(){
+      IntObject o = new IntObject(-1);
+      if (!tom()) makspos(rot, 1, o);
+      return o.get();
+    }
+
+
 
 
     public static void main(String[] args) {
@@ -481,13 +557,12 @@ public class BinTre<T> implements Iterable<T>           // et generisk binærtre
 
       BinTre<String> tre = new BinTre<>(posisjon, verdi);  // konstruktør
 
-      for (Iterator<String> i = tre.iterator(); i.hasNext(); )
-        System.out.print(i.next() + " ");
-
-      System.out.println();
-
-      for (Iterator<String> i = tre.omvendtIterator(); i.hasNext(); )
-        System.out.print(i.next() + " ");
+      System.out.println(tre.antall());
+      System.out.println(tre.høyde());
+      System.out.println(tre.inneholder("H"));
+      System.out.println(tre.inneholder("K"));
+      System.out.println(tre.posisjon("H"));
+      System.out.println(tre.antallBladnoder());
 
 
 
