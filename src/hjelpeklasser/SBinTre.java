@@ -1,6 +1,7 @@
 package hjelpeklasser;
 
 import java.util.Comparator;
+import java.util.stream.Stream;
 
 public class SBinTre<T> // implements Beholder<T>
 {
@@ -130,12 +131,22 @@ public class SBinTre<T> // implements Beholder<T>
     }                                        // siste noden i inorden
   }
 
+  public static <T> SBinTre<T> sbintre(Stream<T> s, Comparator<? super T> c)
+  {
+    SBinTre<T> tre = new SBinTre<>(c);             // komparatoren c
+    s.forEach(tre::leggInn);                       // bygger opp treet
+    return tre;                                    // treet returneres
+  }
+
+  public static <T extends Comparable<? super T>> SBinTre<T> sbintre(Stream<T> s)
+  {
+    return sbintre(s, Comparator.naturalOrder());  // naturlig ordning
+  }
+
   public static void main(String[] args) {
-    SBinTre<String> tre1 = SBinTre.sbintre();          // 1. konstruksjonsmetode
-
-    Comparator<String> c = Comparator.naturalOrder();
-    SBinTre<String> tre2 = SBinTre.sbintre(c);         // 2. konstruksjonsmetode
-
-    System.out.println(tre1.antall() + " " + tre2.antall());
+    String[] s = {"Sohil","Per","Thanh","Fatima","Kari","Jasmin"};
+    SBinTre tre2 = SBinTre.sbintre(Stream.of(s));
+    System.out.println(tre2);
+    
   }
 } // class SBinTre 
