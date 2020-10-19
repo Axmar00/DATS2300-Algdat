@@ -529,7 +529,6 @@ public class BinTre<T> implements Iterable<T>           // et generisk binærtre
 
       return (p.venstre == null ? 0 : antallBladnoder(p.venstre))
               + (p.høyre == null ? 0 : antallBladnoder(p.høyre));
-
     }
 
     public int antallBladnoder(){
