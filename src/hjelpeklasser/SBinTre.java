@@ -143,10 +143,37 @@ public class SBinTre<T> // implements Beholder<T>
     return sbintre(s, Comparator.naturalOrder());  // naturlig ordning
   }
 
+  private static <T> Node<T> balansert(T[] a, int v, int h)  // en rekursiv metode
+  {
+    if (v > h) return null;                       // tomt intervall -> tomt tre
+
+    int m = (v + h)/2;                            // midten
+    T verdi = a[m];                               // midtverdien
+
+    while (v < m && verdi.equals(a[m-1])) m--;    // til venstre
+
+    Node<T> p = balansert(a, v, m - 1);           // venstre subtre
+    Node<T> q = balansert(a, m + 1, h);           // høyre subtre
+
+    return new Node<>(verdi, p, q);               // rotnoden
+  }
+
+  public static <T> SBinTre<T> balansert(T[] a, Comparator<? super T> c)
+  {
+    SBinTre<T> tre = new SBinTre<>(c);          // oppretter et tomt tre
+    tre.rot = balansert(a, 0, a.length - 1);    // bruker den rekursive metoden
+    tre.antall = a.length;                      // setter antallet
+    return tre;                                 // returnerer treet
+  }
+
+  public static <T extends Comparable<? super T>> SBinTre<T> balansert(T[] a)
+  {
+    return balansert(a, Comparator.naturalOrder());
+  }
+
   public static void main(String[] args) {
-    String[] s = {"Sohil","Per","Thanh","Fatima","Kari","Jasmin"};
-    SBinTre tre2 = SBinTre.sbintre(Stream.of(s));
-    System.out.println(tre2);
+    SBinTre<String> tre = SBinTre.balansert(("AAAAABBBBB".split("")));
+    System.out.println(tre.antall() + " " + tre.høyde() + " " + tre);
     
   }
 } // class SBinTre 
