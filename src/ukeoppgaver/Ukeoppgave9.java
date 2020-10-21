@@ -63,4 +63,11 @@ public class Ukeoppgave9 {
   System.out.println(treF);
      */
 
+    /*-------5.2.6-------*/
+    /*Delopg1
+    Den første blir funnet.
+     */
+
+
+
 }

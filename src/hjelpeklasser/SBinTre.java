@@ -171,9 +171,63 @@ public class SBinTre<T> // implements Beholder<T>
     return balansert(a, Comparator.naturalOrder());
   }
 
+  public int antall(T verdi)     // skal ligge i klassen SBinTre
+  {
+    Node<T> p = rot;                            // starter i roten
+    int antallVerdier = 0;
+    while (p != null)                           // sjekker p
+    {
+      int cmp = comp.compare(verdi, p.verdi);   // sammenligner
+      if (cmp < 0) p = p.venstre;               // går til venstre
+      else{
+        if(cmp == 0) antallVerdier++;            //Verdi funnet
+        p = p.høyre;                             //går til høyre
+      }
+    }
+    return antallVerdier;
+  }
+
+  public Liste<T> intervallsøk(T fraverdi, T tilverdi)
+  {
+    Stakk<Node<T>> s = new TabellStakk<>();
+
+    Node<T> p = rot;
+    while (p != null)    // leter etter fraverdi
+    {
+      int cmp = comp.compare(fraverdi,p.verdi);
+      if (cmp < 0)
+      {
+        s.leggInn(p); p = p.venstre;
+      }
+      else if (cmp > 0) p = p.høyre;
+      else break;
+    }
+
+    if (p == null) p = s.taUt();  // neste i inorden
+
+    Liste<T> liste = new TabellListe<>();
+
+    while (p != null && comp.compare(p.verdi,tilverdi) < 0)
+    {
+      liste.leggInn(p.verdi);
+
+      if (p.høyre != null)
+      {
+        p = p.høyre;
+        while (p.venstre != null)
+        {
+          s.leggInn(p); p = p.venstre;
+        }
+      }
+      else if (!s.tom()) p = s.taUt();
+      else p = null;
+    }
+
+    return liste;
+  }
+
   public static void main(String[] args) {
-    SBinTre<String> tre = SBinTre.balansert(("AAAAABBBBB".split("")));
-    System.out.println(tre.antall() + " " + tre.høyde() + " " + tre);
+
     
   }
 } // class SBinTre 

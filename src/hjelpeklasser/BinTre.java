@@ -550,18 +550,13 @@ public class BinTre<T> implements Iterable<T>           // et generisk binærtre
 
 
 
+
+
     public static void main(String[] args) {
       int[] posisjon = {1,2,3,4,5,6,7,8,9,10};             // posisjoner og
       String[] verdi = "ABCDEFGHIJ".split("");             // verdier i nivåorden
 
       BinTre<String> tre = new BinTre<>(posisjon, verdi);  // konstruktør
-
-      System.out.println(tre.antall());
-      System.out.println(tre.høyde());
-      System.out.println(tre.inneholder("H"));
-      System.out.println(tre.inneholder("K"));
-      System.out.println(tre.posisjon("H"));
-      System.out.println(tre.antallBladnoder());
 
 
 
