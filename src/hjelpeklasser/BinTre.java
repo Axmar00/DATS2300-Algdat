@@ -547,18 +547,67 @@ public class BinTre<T> implements Iterable<T>           // et generisk binærtre
       return o.get();
     }
 
+    public boolean erMintre(Comparator<? super T> c) // legges i BinTre
+    {
+      if (rot == null) return true;    // et tomt tre er et minimumstre
+      else return erMintre(rot,c);     // kaller den private hjelpemetoden
+    }
 
+    private static <T> boolean erMintre(Node<T> p, Comparator<? super T> c)
+    {
+      if (p.venstre != null)
+      {
+        if (c.compare(p.venstre.verdi,p.verdi) < 0) return false;
+        if (!erMintre(p.venstre,c)) return false;
+      }
+      if (p.høyre != null)
+      {
+        if (c.compare(p.høyre.verdi,p.verdi) < 0) return false;
+        if (!erMintre(p.høyre,c)) return false;
+      }
+      return true;
+    }
 
+    public String minimumsGrenen(Comparator<? super T> c){
+      if(tom()) return "[]";
+      StringBuilder sb = new StringBuilder();
+      sb.append("[");
+      Node<T> p = rot;
+      sb.append(p.verdi);
+      while(true){
+        if(p.venstre != null && p.høyre != null) {
+          int comp = c.compare(p.venstre.verdi, p.høyre.verdi);
+          if(comp < 0){
+            p = p.venstre;
+            sb.append(", " + p.verdi);
 
-
+          }
+          else{
+            p = p.høyre;
+            sb.append(", " + p.verdi);
+          }
+        }
+        else if(p.venstre != null){
+          p = p.høyre;
+          sb.append(", " + p.verdi);
+        }
+        else if(p.høyre != null){
+          p = p.høyre;
+          sb.append(", " + p.verdi);
+        }
+        else break;
+      }
+      sb.append("]");
+      return sb.toString();
+    }
 
     public static void main(String[] args) {
-      int[] posisjon = {1,2,3,4,5,6,7,8,9,10};             // posisjoner og
-      String[] verdi = "ABCDEFGHIJ".split("");             // verdier i nivåorden
+      int[] posisjon = {1,2,3,4,5,6,7,10,11,13,14,22,23,28,29};
+      Integer[] verdi = {1,3,5,7,6,8,11,12,10,10,15,14,18,15,20};
 
-      BinTre<String> tre = new BinTre<>(posisjon, verdi);  // konstruktør
+      BinTre<Integer> tre = new BinTre<>(posisjon, verdi);  // Bruker en konstruktør
 
-
-
+      Comparator<Integer> c = Comparator.naturalOrder();
+      System.out.println(tre.minimumsGrenen(c));
     }
   } // class BinTre<T>
