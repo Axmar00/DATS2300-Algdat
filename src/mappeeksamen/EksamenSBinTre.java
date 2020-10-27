@@ -242,7 +242,7 @@ public class EksamenSBinTre<T> {
 
     private static <T> Node<T> nestePostorden(Node<T> p) {
         Node<T> curr = p.forelder;
-        while(curr != null){
+        if(curr != null){
             if(curr.venstre == p){
                 if(curr.høyre == null){
                     return curr;
