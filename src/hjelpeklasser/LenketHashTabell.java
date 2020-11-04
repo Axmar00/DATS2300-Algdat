@@ -151,7 +151,9 @@ public class LenketHashTabell<T> implements Beholder<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+
+        for(int i = 0; i < hash.length; i++) hash[i] = null;
+        antall = 0;
     }
 
     @Override
