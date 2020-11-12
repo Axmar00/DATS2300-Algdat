@@ -1,7 +1,10 @@
 package hjelpeklasser;
 
+import mappeeksamen.EksamenSBinTre;
+
 import java.util.Comparator;
 import java.util.stream.Stream;
+
 
 public class SBinTre<T> // implements Beholder<T>
 {
@@ -224,6 +227,59 @@ public class SBinTre<T> // implements Beholder<T>
     }
 
     return liste;
+  }
+
+  public void settvAntall(){
+    settvAntall(rot);
+  }
+  public int settvAntall(Node<T> p){
+    int antall = 0;
+    if(p.venstre != null){
+      antall++;
+      settvAntall(p.venstre);
+    }
+    if(p.høyre != null){
+      antall++;
+      settvAntall(p.høyre);
+    }
+    //p.vAntall = antall;
+    return antall;
+  }
+
+  public int dybde(T verdi){
+    Node<T> p = rot;
+    int dybd = 0;
+    while(p != null){
+      int cmp = comp.compare(verdi,p.verdi);
+      if(cmp < 0){
+        p = p.venstre;
+        dybd++;
+      }
+      else{
+        if(cmp == 0) return dybd;
+        p = p.høyre;
+        dybd++;
+      }
+    }
+    return -1;
+  }
+
+  public T nestMinst(){
+    if(antall < 2) throw new IllegalArgumentException("Kan ikke ha færre enn to verdier");
+
+    Node<T> p = rot, q = null;
+    while(p.venstre != null){
+      q = p;
+      p = p.venstre;
+    }
+    if(p.høyre != null){
+      p = p.høyre;
+      while(p.venstre != null) p = p.venstre;
+      return p.verdi;
+    }
+    else{
+      return q.verdi;
+    }
   }
 
   public static void main(String[] args) {

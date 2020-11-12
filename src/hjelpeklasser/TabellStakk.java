@@ -71,9 +71,9 @@ public class TabellStakk<T> implements Stakk<T>
     public String toString(){
         if(tom()) return "[]";
         StringBuilder s = new StringBuilder();
-        s.append("[").append(a[0]);
-        for(int i = 1; i < antall; i++) {
-            if(!a[i].equals(null)) {
+        s.append("[").append(a[antall-1]);
+        for(int i = antall-2; i >= 0; i--) {
+            if(a[i] != null) {
                 s.append(",").append(" ").append(a[i]);
             }
         }
@@ -165,14 +165,35 @@ public class TabellStakk<T> implements Stakk<T>
         while (!B.tom()) A.leggInn(B.taUt());*/
     }
 
-    public static void main(String[] args) {
-        TabellStakk s = new TabellStakk();
-        int[] arr = {5,6,4,2,3,1};
-        for(int i = 0; i < arr.length; i++) s.leggInn(arr[i]);
-        System.out.println(s);
+    public static <T> void omvendtkopi(Stakk<T> a, Stakk<T> b){
+        Stakk<T> c = new TabellStakk<>();
+        while(!a.tom()){
+            T temp = a.taUt();
+            c.leggInn(temp);
+            b.leggInn(temp);
+        }
+        while(!c.tom()) a.leggInn(c.taUt());
+    }
 
-        sorter(s,Comparator.naturalOrder());
-        System.out.println(s);
+    public static <T> int indeks(Stakk<T> s, T verdi){
+        Stakk<T> t = new TabellStakk<>();
+        int indeks = 0;
+        while(!s.tom()){
+            T temp = s.taUt();
+            if(temp.equals(verdi)){
+                s.leggInn(temp);
+                break;
+            }
+            t.leggInn(temp);
+            indeks++;
+        }
+        while(!t.tom()) s.leggInn(t.taUt());
+        return indeks==s.antall() ? -1 : indeks;
+    }
+
+    public static void main(String[] args) {
+
+
     }
 
 }  // class TabellStakk

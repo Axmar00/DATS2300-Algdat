@@ -45,6 +45,7 @@ public class Oppgave4 {
         partisjonering(a,oddetall,a.length-1);
     }
 
+
     public static void main(String[] args){
         int[] a ={1,3,5,6,2,3,7};
         partisjonering(a,0,a.length-1);

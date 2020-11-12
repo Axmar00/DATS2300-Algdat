@@ -140,9 +140,9 @@ public class TabellKø<T> implements Kø<T>
     }
 
     public static void main(String[] args) {
-        TabellKø<Integer> k = new TabellKø<>();
-        int[] arr = {1,2,3,4,5,6};
-        for(int i = 0; i < arr.length; i++) k.leggInn(arr[i]);
+        TabellKø<Character> k = new TabellKø<>();
+        char[] c1 = "ABCDEFGHIJKLM".toCharArray();
+        for(int i = 0; i < c1.length; i++) k.leggInn(c1[i]);
         System.out.println(k);
        // k.snu(k);
         //System.out.println(k);
