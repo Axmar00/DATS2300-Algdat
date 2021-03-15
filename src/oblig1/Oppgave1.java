@@ -37,7 +37,6 @@ public class Oppgave1 {
         }
         return ombyttinger;
     }
-    public static void main(String[] args){
 
-    }
+
 }
