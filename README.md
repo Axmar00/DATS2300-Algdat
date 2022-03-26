@@ -1,4 +1,4 @@
-<img align="center" alt="Spring" width="150px" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/800px-Java_programming_language_logo.svg.png" />
+<img align="center" alt="Spring" height="120" src="https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Java_programming_language_logo.svg/800px-Java_programming_language_logo.svg.png" />
 
-# DATS2300 - Algoritmer og Datastrukturer
-Oppgaver, obliger, eksamensoppgaver og diverse i faget DATS2300 - Algoritmer og Datastrukturer på OsloMet.
+# DATS2300 - Algorithms and Data Structures at OsloMet
+My weekly assignments, mandatory assignments and exam in the course <b>DATS2300 - Algorithms and Data Structures</b>
